@@ -5,3 +5,4 @@ Team Members
 - Jonathan Gómez
 - Bintu Lukulay
 - Natalio Maciel
+- David Perez
