@@ -1,7 +1,7 @@
 import { getLocalStorage, setLocalStorage, getParam } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 
-// PRUEBA GIT
+// PRUEBA GIT 2
 
 const dataSource = new ProductData("tents");
 
