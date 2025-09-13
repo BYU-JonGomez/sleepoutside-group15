@@ -1,28 +1,16 @@
-import { getLocalStorage, setLocalStorage, getParam } from "./utils.mjs";
+import { getParam } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
+import ProductDetails from "./ProductDetails.mjs";
 
-// PRUEBA GIT 2
+// 1. Obtener el productId de la URL (?product=xxx)
+const productId = getParam("product");
 
+// 2. Crear la fuente de datos (ejemplo: "tents")
 const dataSource = new ProductData("tents");
 
-function addProductToCart(product) {
-  // get current cart or empty array
-  let cart = getLocalStorage("so-cart") || [];
+// 3. Crear instancia de ProductDetails
+const productDetails = new ProductDetails(productId, dataSource);
 
-  // add new product
-  cart.push(product);
+// 4. Inicializar (renderizar producto + activar botón)
+productDetails.init();
 
-  // save updated cart
-  setLocalStorage("so-cart", cart);
-}
-
-// add to cart button event handler
-async function addToCartHandler(e) {
-  const product = await dataSource.findProductById(e.target.dataset.id);
-  addProductToCart(product);
-}
-
-// add listener to Add to Cart button
-document
-  .getElementById("addToCart")
-  .addEventListener("click", addToCartHandler);
