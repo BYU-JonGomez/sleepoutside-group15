@@ -8,13 +8,10 @@ export default class ProductDetails {
     }
 
     async init() {
-        // 1. Obtener los detalles del producto
         this.product = await this.dataSource.findProductById(this.productId);
 
-        // 2. Renderizar los detalles en el HTML
         this.renderProductDetails();
 
-        // 3. Agregar el event listener al botón "Add to Cart"
         document
             .getElementById("addToCart")
             .addEventListener("click", this.addProductToCart.bind(this));
