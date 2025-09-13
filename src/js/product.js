@@ -26,3 +26,6 @@ async function addToCartHandler(e) {
 document
   .getElementById("addToCart")
   .addEventListener("click", addToCartHandler);
+
+  // get product id from query string
+  const productId = getParam("product");
