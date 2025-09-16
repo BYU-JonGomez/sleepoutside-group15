@@ -13,4 +13,3 @@ const productDetails = new ProductDetails(productId, dataSource);
 
 // 4. Inicializar (renderizar producto + activar botón)
 productDetails.init();
-

@@ -1,9 +1,17 @@
 import { getLocalStorage } from "./utils.mjs";
+const priceContainer = document.getElementById("price-container");
+const divRef = document.querySelector(".price-div");
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  if (cartItems) {
+    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+    renderTotal(cartItems);
+  } else {
+    divRef.setAttribute("class", `hidden`);
+  }
 }
 
 function cartItemTemplate(item) {
@@ -25,4 +33,12 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+function renderTotal(cartItems) {
+  let sumPrices = 0;
+  cartItems.forEach((item) => {
+    sumPrices += item.FinalPrice;
+  });
+
+  priceContainer.textContent = `Total: $${sumPrices.toFixed(2)}`;
+}
 renderCartContents();
