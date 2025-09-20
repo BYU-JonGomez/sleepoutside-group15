@@ -1,12 +1,17 @@
 import { getLocalStorage } from "./utils.mjs";
+const priceContainer = document.getElementById("price-container");
+const divRef = document.querySelector(".price-div");
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart") || [];
+  const cartItems = getLocalStorage("so-cart");
+  if (cartItems) {
+    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
-
-  // update badge count after rendering
+    renderTotal(cartItems);
+  } else {
+    divRef.setAttribute("class", `hidden`);
+  }
   updateCartCount(cartItems.length);
 }
 
@@ -29,7 +34,6 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-
 const badge = document.getElementById('cart-badge');
 const cartBtn = document.getElementById('cart-btn');
 
@@ -51,4 +55,14 @@ function updateCartCount(count) {
   }
 }
 
+function renderTotal(cartItems) {
+  let sumPrices = 0;
+  cartItems.forEach((item) => {
+    sumPrices += item.FinalPrice;
+  });
+
+  priceContainer.textContent = `Total: $${sumPrices.toFixed(2)}`;
+}
+
 renderCartContents();
+
