@@ -1,4 +1,7 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
+
+loadHeaderFooter();
+
 const priceContainer = document.getElementById("price-container");
 const divRef = document.querySelector(".price-div");
 
