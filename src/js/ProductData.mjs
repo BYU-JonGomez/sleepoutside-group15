@@ -1,3 +1,5 @@
+const baseURL = import.meta.env.VITE_SERVER_URL;
+
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -5,23 +7,23 @@ function convertToJson(res) {
     throw new Error("Bad Response");
   }
 }
-// ProductData class to fetch product data from JSON files
+// ProductData class to fetch product data from an API
 export default class ProductData {
-  constructor(category) {
-    this.category = category;
-    this.path = `../json/${this.category}.json`; 
+  constructor() {
+    // The category is passed in to the getData method
   }
 
   // Fetch and return the full product data array
-  getData() {
-    return fetch(this.path)
-      .then(convertToJson) 
-      .then((data) => data);
+  async getData(category) {
+    const response = await fetch(`${baseURL}products/search/${category}`);
+    const data = await convertToJson(response);
+    return data.Result;
   }
 
   // Find and return a product by its ID
   async findProductById(id) {
-    const products = await this.getData(); 
-    return products.find((item) => item.Id === id);
+    const response = await fetch(`${baseURL}product/${id}`);
+    const data = await convertToJson(response);
+    return data.Result;
   }
 }

@@ -309,3 +309,26 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0;
+  list-style: none;
+}
+
+.category-list li {
+  margin: 1em;
+  text-align: center;
+}
+
+.category-list a {
+  text-decoration: none;
+  color: #333;
+}
+
+.category-list img {
+  width: 100px;
+  height: 100px;
+}
