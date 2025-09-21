@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -162,12 +162,14 @@ button {
   display: inline-block;
   white-space: nowrap;
   pointer-events: none;
-  transition: transform 150ms ease, opacity 150ms ease;
+  transition:
+    transform 150ms ease,
+    opacity 150ms ease;
 }
 
 .cart-badge.hidden {
   opacity: 0;
-  transform: scale(.6);
+  transform: scale(0.6);
   pointer-events: none;
 }
 

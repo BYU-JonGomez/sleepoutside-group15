@@ -11,14 +11,10 @@ export default class ProductDetails {
     this.dataSource = dataSource;    // Instance of ProductData for fetching
   }
 
-  /**
-   * Initialize the product page: fetch data, render, and set up event listeners
-   */
+
   async init() {
-    // 1️⃣ Fetch product details
     this.product = await this.dataSource.findProductById(this.productId);
 
-    // Handle missing product
     if (!this.product) {
       const container = document.getElementById("product-details");
       if (container) {
@@ -27,21 +23,18 @@ export default class ProductDetails {
       return;
     }
 
-    // 2️⃣ Render HTML for product
     this.renderProductDetails();
 
-    // 3️⃣ Attach "Add to Cart" listener
-    const addBtn = document.getElementById("addToCart");
-    if (addBtn) {
-      addBtn.addEventListener("click", this.addProductToCart.bind(this));
-    }
+    document
+      .getElementById("addToCart")
+      .addEventListener("click", this.addProductToCart.bind(this));
   }
 
   /**
    * Add the current product to the cart (stored in localStorage)
    */
   addProductToCart() {
-    let cart = getLocalStorage("so-cart") || [];
+    let cartItems = getLocalStorage("so-cart") || [];
 
     if (!this.product || !this.product.Id) {
       alert("Could not add the product. Try reloading the page.");
@@ -57,28 +50,21 @@ export default class ProductDetails {
    * Render product details into the #product-details container
    */
   renderProductDetails() {
-    const container = document.getElementById("product-details");
-    if (!container) return;
-
-    const colors = (this.product.Colors || []).map((c) => c.ColorName).join(", ");
-
-    container.innerHTML = `
-      <section class="product-detail">
-        <h3>${this.product.Brand?.Name || ""}</h3>
-        <h2 class="divider">${this.product.Name || ""}</h2>
-        <img
-          class="divider"
-          src="${this.product.Image || ""}"
-          alt="${this.product.Name || ""}"
-          id="productImage"
-        />
-        <p class="product-card__price">$${this.product.FinalPrice || ""}</p>
-        <p class="product__color">${colors}</p>
-        <p class="product__description">${this.product.DescriptionHtmlSimple || ""}</p>
-        <div class="product-detail__add">
-          <button id="addToCart" data-id="${this.product.Id || ""}">Add to Cart</button>
-        </div>
-      </section>
-    `;
+    productDetailsTemplate(this.product);
   }
+}
+
+function productDetailsTemplate(product) {
+  document.querySelector("h2").textContent = product.Brand.Name;
+  document.querySelector("h3").textContent = product.NameWithoutBrand;
+
+  const productImage = document.getElementById("productImage");
+  productImage.src = product.Image;
+  productImage.alt = product.NameWithoutBrand;
+
+  document.getElementById("productPrice").textContent = product.FinalPrice;
+  document.getElementById("productColor").textContent = product.Colors[0].ColorName;
+  document.getElementById("productDesc").innerHTML = product.DescriptionHtmlSimple;
+
+  document.getElementById("addToCart").dataset.id = product.Id;
 }
