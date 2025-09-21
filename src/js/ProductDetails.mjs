@@ -41,8 +41,8 @@ export default class ProductDetails {
       return;
     }
 
-    cart.push(this.product);
-    setLocalStorage("so-cart", cart);
+    cartItems.push(this.product);
+    setLocalStorage("so-cart", cartItems);
     alert("Product added to the cart!");
   }
 
@@ -55,16 +55,12 @@ export default class ProductDetails {
 }
 
 function productDetailsTemplate(product) {
-  document.querySelector("h2").textContent = product.Brand.Name;
-  document.querySelector("h3").textContent = product.NameWithoutBrand;
-
-  const productImage = document.getElementById("productImage");
-  productImage.src = product.Image;
-  productImage.alt = product.NameWithoutBrand;
-
+  document.getElementById("product-brand-name").textContent = product.Brand.Name;
+  document.getElementById("product-name").textContent = product.Name;
+  document.getElementById("productImage").src = product.Images.PrimaryLarge;
+  document.getElementById("productImage").alt = product.Name;
   document.getElementById("productPrice").textContent = product.FinalPrice;
   document.getElementById("productColor").textContent = product.Colors[0].ColorName;
   document.getElementById("productDesc").innerHTML = product.DescriptionHtmlSimple;
-
   document.getElementById("addToCart").dataset.id = product.Id;
 }
