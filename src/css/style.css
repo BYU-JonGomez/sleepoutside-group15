@@ -208,8 +208,7 @@ button {
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
-}
-
+}
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
@@ -331,4 +330,40 @@ footer {
 .category-list img {
   width: 100px;
   height: 100px;
+}
+
+.cart-card__remove {
+  grid-column: 4; /* Place it in a new column */
+  grid-row: 1 / span 2; /* Span across two rows */
+  align-self: center; /* Vertically align in the middle */
+  justify-self: center; /* Horizontally align in the middle */
+  cursor: pointer;
+  font-weight: bold;
+  color: #e53935; /* Red color */
+  font-size: 1.2em;
+  padding: 0.5em;
+  border: 1px solid #e53935;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.cart-card__remove:hover {
+  background-color: #ffebee; /* Light red background on hover */
+}
+
+/* Adjust cart-card grid to accommodate the new column */
+.cart-card {
+  display: grid;
+  grid-template-columns: 25% auto 15% 50px; /* Add a column for the remove button */
+}
+
+@media screen and (min-width: 500px) {
+  .cart-card {
+    grid-template-columns: 150px auto 15% 50px; /* Adjust for larger screens */
+  }
 }
