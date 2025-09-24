@@ -7,3 +7,6 @@ const productListElement = qs(".product-list");
 
 const productList = new ProductList("tents", productData, productListElement);
 productList.init();
+import { loadHeaderFooter } from "./utils.mjs";
+
+loadHeaderFooter();

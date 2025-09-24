@@ -6,3 +6,4 @@ Team Members
 - Bintu Lukulay
 - Natalio Maciel
 - David Perez
+-Laura Toledo
