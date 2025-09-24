@@ -13,6 +13,12 @@ export default class ProductData {
     // The category is passed in to the getData method
   }
 
+  getData() {
+    return fetch(this.path)
+      .then(convertToJson)
+      .then((data) => data);
+  }
+
   // Fetch and return the full product data array
   async getData(category) {
     const response = await fetch(`${baseURL}products/search/${category}`);
