@@ -10,8 +10,13 @@ function convertToJson(res) {
 // ProductData class to fetch product data from an API
 export default class ProductData {
   constructor() {
-    // this.category = category;
-    // this.path = `../public/json/${this.category}.json`;
+    // The category is passed in to the getData method
+  }
+
+  getData() {
+    return fetch(this.path)
+      .then(convertToJson)
+      .then((data) => data);
   }
 
   // Fetch and return the full product data array
@@ -25,7 +30,6 @@ export default class ProductData {
   async findProductById(id) {
     const response = await fetch(`${baseURL}product/${id}`);
     const data = await convertToJson(response);
-    console.log(data.Result);
     return data.Result;
   }
 }
