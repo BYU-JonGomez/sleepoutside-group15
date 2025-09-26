@@ -1,6 +1,9 @@
 import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
-loadHeaderFooter();
+loadHeaderFooter().then(() => {
+  const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
+  updateCartCount(cartItems.length);
+});
 
 const priceContainer = document.getElementById("price-container");
 const divRef = document.querySelector(".price-div");
@@ -47,10 +50,11 @@ function renderTotal(cartItems) {
   priceContainer.textContent = `Total: $${sumPrices.toFixed(2)}`;
 }
 
-const badge = document.getElementById("cart-badge");
-const cartBtn = document.getElementById("cart-btn");
-
 export function updateCartCount(count) {
+  const badge = document.getElementById("cart-badge");
+  const cartBtn = document.getElementById("cart-btn");
+  if (!badge) return;
+
   const n = Number(count) || 0;
 
   if (n <= 0) {
@@ -61,8 +65,6 @@ export function updateCartCount(count) {
     badge.textContent = n > 99 ? "99+" : String(n);
     badge.classList.remove("hidden");
     cartBtn?.setAttribute("aria-label", `cart, ${n} item${n > 1 ? "s" : ""}`);
-
-    // animation effect
     badge.style.transform = "scale(1.25)";
     setTimeout(() => (badge.style.transform = ""), 120);
   }
