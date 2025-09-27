@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -331,4 +331,68 @@ footer {
 .category-list img {
   width: 100px;
   height: 100px;
+}
+
+/* Checkout form */
+form {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  display: block;
+  font-size: 0.9rem;
+  color: #E07A5F;
+  padding-top: 0.2rem;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form input[type="number"],
+form input[type="date"] {
+  display: block;
+  margin: 0.1rem 0 1rem 0;
+  padding: 0.3rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+  border-left-width: 5px;
+  border-left-color: #555;
+  font-size: 1rem;
+  color: #3D405B;
+  width: 100%;
+}
+
+form input:required {
+  border-left-color: #d70000;
+}
+
+form input:focus {
+  border-left-color: black;
+  outline: none;
+}
+
+form input:required:valid {
+  border-left-color: green;
+}
+
+#results {
+  background-color: #F4F1DE;
+  padding: 0 1rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+form input[type="submit"] {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin: 1rem auto;
 }

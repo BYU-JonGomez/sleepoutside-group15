@@ -7,8 +7,8 @@ function convertToJson(res) {
     throw new Error("Bad Response");
   }
 }
-// ProductData class to fetch product data from an API
-export default class ProductData {
+// ExternalServices class to fetch product data from an API
+export default class ExternalServices {
   constructor() {
     // The category is passed in to the getData method
   }

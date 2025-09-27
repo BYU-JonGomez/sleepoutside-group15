@@ -8,7 +8,7 @@ export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;      // Product ID to look up
     this.product = {};               // Product details object
-    this.dataSource = dataSource;    // Instance of ProductData for fetching
+    this.dataSource = dataSource;    // Instance of ExternalServices for fetching
   }
 
 

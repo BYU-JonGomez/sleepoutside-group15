@@ -1,11 +1,11 @@
 import { getParam, loadHeaderFooter } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 
 loadHeaderFooter();
 
-// Create a ProductData instance
-const dataSource = new ProductData();
+// Create a ExternalServices instance
+const dataSource = new ExternalServices();
 const productId = getParam("product");
 
 // 3. Crear instancia de ProductDetails
