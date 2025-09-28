@@ -17,24 +17,50 @@
         <h2>Review & Place your Order</h2>
         
         <form method="POST" class="" id="checkout-form">
-            <label>First Name
-              <input type="text" name="fname" required autocomplete="given-name" title="First Name" id="fname" />
-            </label>
-            <label>Last name
-              <input type="text" name="lname" required autocomplete="given-name" title="Your Name" id="lname" />
-            </label>
-            <label>Address
-              <input type="text" name="street" required id="street" placeholder="Street Address" />
-              <input type="text" name="city" required id="city" placeholder="City" />
-              <input type="text" name="state" required id="state" placeholder="State" />
-              <input type="number" name="zip" required id="zip" placeholder="Zip Code" />
-            </label>
-    
-            <label>Payment
-              <input type="tel" name="cardNumber" required placeholder="XXXX-XXXX-XXXX-XXXX" id="cardNumber" maxlength="19" />
-              <input type="text" name="expiration" id="expiration" required placeholder="MM/YY" maxlength="5" />
-              <input type="number" name="code" id="code" required placeholder="Security Code" />
-            </label>
+            <fieldset class="form-section">
+              <legend>Shipping</legend>
+
+              <label for="fname">First Name
+                <input type="text" name="fname" required autocomplete="given-name" title="First Name" id="fname" />
+              </label>
+
+              <label for="lname">Last Name
+                <input type="text" name="lname" required autocomplete="given-name" title="Your Name" id="lname" />
+              </label>
+
+              <label for="street">Street
+                <input type="text" name="street" required id="street" placeholder="Street Address" />
+              </label>
+
+              <label for="city">City
+                <input type="text" name="city" required id="city" placeholder="City" />
+              </label>
+
+              <label for="state">State
+                <input type="text" name="state" required id="state" placeholder="State" />
+              </label>
+
+              <label for="zip">Zip
+                <input type="number" name="zip" required id="zip" placeholder="Zip Code" />
+              </label>
+            </fieldset>
+
+            <fieldset class="form-section">
+              <legend>Payment</legend>
+
+              <label for="cardNumber">Card number
+                <input type="tel" name="cardNumber" required placeholder="XXXX-XXXX-XXXX-XXXX" id="cardNumber" maxlength="19" />
+              </label>
+
+              <label for="expiration">Expiration
+                <input type="text" name="expiration" id="expiration" required placeholder="MM/YY" maxlength="5" />
+              </label>
+
+              <label for="code">Security Code
+                <input type="number" name="code" id="code" required placeholder="Security Code" />
+              </label>
+            </fieldset>
+
             <input type="submit" value="Checkout" class="checkout-btn" />
         </form>
 

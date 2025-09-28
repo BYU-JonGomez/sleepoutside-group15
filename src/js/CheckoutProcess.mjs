@@ -13,14 +13,12 @@ function formDataToJSON(formElement) {
 }
 
 function packageItems(items) {
-  return items.map((item) => {
-    return {
-      id: item.Id,
-      name: item.Name,
-      price: item.FinalPrice,
-      quantity: item.quantity || 1,
-    };
-  });
+  return items.map((item) => ({
+    id: item.Id,
+    name: item.Name,
+    price: item.FinalPrice,
+    quantity: item.quantity || 1,
+  }));
 }
 
 export default class CheckoutProcess {
@@ -100,11 +98,73 @@ export default class CheckoutProcess {
       location.assign("/checkout/success.html");
     } catch (err) {
       console.error(err);
-      if (err.name === 'servicesError') {
-        const errorMessages = Object.values(err.message).join('\n');
-        alert(errorMessages);
+
+      // Build an array of error messages from the server response
+      let messages = [];
+      if (err && err.name === "servicesError") {
+        const src = err.message;
+        if (Array.isArray(src)) {
+          messages = src;
+        } else if (src && typeof src === "object") {
+          messages = Object.values(src);
+        } else if (typeof src === "string") {
+          messages = [src];
+        } else {
+          messages = ["There was a problem processing your payment."];
+        }
       } else {
-        alert("An unknown error occurred during checkout.");
+        messages = ["An unknown error occurred during checkout."];
+      }
+
+      // Ensure an alert container exists just above the form
+      const formEl =
+        form instanceof HTMLFormElement
+          ? form
+          : document.querySelector("#checkout-form");
+      let container = document.querySelector("#checkout-messages");
+      if (!container) {
+        container = document.createElement("div");
+        container.id = "checkout-messages";
+        container.className = "alert-container";
+        container.setAttribute("aria-live", "polite");
+        if (formEl && formEl.parentNode) {
+          formEl.parentNode.insertBefore(container, formEl);
+        } else {
+          document.body.prepend(container);
+        }
+      }
+
+      // Simple HTML-escape helper
+      const escape = (s) => {
+        const d = document.createElement("div");
+        d.textContent = String(s);
+        return d.innerHTML;
+      };
+
+      // Render each error as a dismissible banner (no alerts)
+      container.innerHTML = messages
+        .map(
+          (m) =>
+            `<div class="alert-banner" role="alert">
+               <span>${escape(m)}</span>
+               <button class="alert-close" type="button" aria-label="Close">×</button>
+             </div>`
+        )
+        .join("");
+
+      // One-time event delegation to close banners
+      if (!container.dataset.bound) {
+        container.addEventListener("click", (e) => {
+          if (e.target && e.target.classList.contains("alert-close")) {
+            e.target.parentElement.remove();
+          }
+        });
+        container.dataset.bound = "1";
+      }
+
+      // Bring the messages into view without disrupting form styles
+      if (container && typeof container.scrollIntoView === "function") {
+        container.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
   }
