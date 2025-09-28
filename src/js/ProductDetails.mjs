@@ -15,14 +15,6 @@ export default class ProductDetails {
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
 
-    if (!this.product) {
-      const container = document.getElementById("product-details");
-      if (container) {
-        container.innerHTML = `<p style="color:red;">Product not found. Please check the link or ID.</p>`;
-      }
-      return;
-    }
-
     this.renderProductDetails();
 
     document

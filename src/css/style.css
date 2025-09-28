@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -345,7 +345,7 @@ form {
 form label {
   display: block;
   font-size: 0.9rem;
-  color: #E07A5F;
+  color: #e07a5f;
   padding-top: 0.2rem;
 }
 
@@ -361,7 +361,7 @@ form input[type="date"] {
   border-left-width: 5px;
   border-left-color: #555;
   font-size: 1rem;
-  color: #3D405B;
+  color: #3d405b;
   width: 100%;
 }
 
@@ -379,7 +379,7 @@ form input:required:valid {
 }
 
 #results {
-  background-color: #F4F1DE;
+  background-color: #f4f1de;
   padding: 0 1rem;
   border: 1px solid var(--primary-color);
   border-radius: 6px;
