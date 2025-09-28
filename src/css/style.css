@@ -334,25 +334,26 @@ footer {
 }
 
 /* Checkout form */
-form {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-  margin: 15px;
+#checkout-form {
+  margin: 15px auto;
   display: flex;
   flex-direction: column;
+  max-width: 600px;
+  width: 100%;
 }
 
-form label {
+#checkout-form label {
   display: block;
   font-size: 0.9rem;
   color: #e07a5f;
   padding-top: 0.2rem;
+  margin-bottom: 1rem; /* Added spacing */
 }
 
-form input[type="text"],
-form input[type="tel"],
-form input[type="number"],
-form input[type="date"] {
+#checkout-form input[type="text"],
+#checkout-form input[type="tel"],
+#checkout-form input[type="number"],
+#checkout-form input[type="date"] {
   display: block;
   margin: 0.1rem 0 1rem 0;
   padding: 0.3rem;
@@ -365,16 +366,16 @@ form input[type="date"] {
   width: 100%;
 }
 
-form input:required {
+#checkout-form input:required {
   border-left-color: #d70000;
 }
 
-form input:focus {
+#checkout-form input:focus {
   border-left-color: black;
   outline: none;
 }
 
-form input:required:valid {
+#checkout-form input:required:valid {
   border-left-color: green;
 }
 
@@ -387,7 +388,12 @@ form input:required:valid {
   padding: 1rem;
 }
 
-form input[type="submit"] {
+/* General button style for <a> and <input[type=submit]> */
+.checkout-btn {
+  display: block;
+  width: fit-content;
+  text-decoration: none;
+  text-align: center;
   background-color: var(--secondary-color);
   color: white;
   border: none;
@@ -395,4 +401,49 @@ form input[type="submit"] {
   cursor: pointer;
   padding: 0.5rem 1rem;
   margin: 1rem auto;
+}
+
+/* Order summary styling */
+.order-summary {
+    background-color: #f4f1de;
+    padding: 1.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 6px;
+    max-width: 600px;
+    width: 100%;
+    margin: 2rem auto;
+}
+
+.order-summary h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.summary-item.total {
+    border-top: 2px solid var(--primary-color);
+    padding-top: 1rem;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.success-message {
+    text-align: center;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 6px;
+    max-width: 500px;
+}
+
+.success-message h1 {
+    color: var(--secondary-color);
 }
