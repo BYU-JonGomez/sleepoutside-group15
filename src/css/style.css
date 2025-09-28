@@ -447,3 +447,53 @@ footer {
 .success-message h1 {
     color: var(--secondary-color);
 }
+/* Checkout error banners */
+.alert-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 1rem auto;
+}
+.alert-banner {
+  background: var(--primary-color);
+  color: #1f1308;
+  border: 1px solid #d8893e;
+  border-radius: 4px;
+  padding: 0.75rem 2rem 0.75rem 0.75rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  margin-bottom: 0.5rem;
+}
+.alert-banner span {
+  line-height: 1.3;
+}
+.alert-close {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.35rem;
+  background: transparent;
+  border: none;
+  color: #5c2a07;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.alert-close:hover {
+  opacity: 0.8;
+}
+/* Checkout sections (fieldset look) */
+#checkout-form fieldset.form-section {
+  border: 1px solid #a9a9a9;
+  border-radius: 4px;
+  padding: 0.75rem 0.75rem 0.5rem;
+  margin: 0 0 1rem 0;
+}
+#checkout-form fieldset.form-section legend {
+  font-weight: 700;
+  color: var(--secondary-color);
+  padding: 0 0.4rem;
+  font-size: 1.05rem;
+}
