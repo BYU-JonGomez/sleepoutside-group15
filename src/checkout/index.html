@@ -1,54 +1,113 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Checkout</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/checkout.js" type="module"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sleep Outside | Checkout</title>
-  <link rel="stylesheet" href="../css/style.css" />
-  <script src="../js/checkout.js" type="module"></script>
-</head>
+  <body>
+    <header id="main-header"></header>
 
-<body>
-  <header id="main-header"></header>
+    <main class="divider">
+      <section class="products">
+        <h2>Review & Place your Order</h2>
 
-  <main class="divider">
-    <section class="products">
-      <h2>Review & Place your Order</h2>
+        <form method="POST" class="" id="checkout-form">
+          <label
+            >First Name
+            <input
+              type="text"
+              name="fname"
+              required
+              autocomplete="given-name"
+              title="First Name"
+              id="fname"
+            />
+          </label>
+          <label
+            >Last name
+            <input
+              type="text"
+              name="lname"
+              required
+              autocomplete="given-name"
+              title="Your Name"
+              id="lname"
+            />
+          </label>
+          <label
+            >Address
+            <input
+              type="text"
+              name="street"
+              required
+              id="street"
+              placeholder="Street Address"
+            />
+            <input
+              type="text"
+              name="city"
+              required
+              id="city"
+              placeholder="City"
+            />
+            <input
+              type="text"
+              name="state"
+              required
+              id="state"
+              placeholder="State"
+            />
+            <input
+              type="number"
+              name="zip"
+              required
+              id="zip"
+              placeholder="Zip Code"
+            />
+          </label>
 
-      <form method="POST" class="" id="checkout-form">
-        <label>First Name
-          <input type="text" name="fname" required autocomplete="given-name" title="First Name" id="fname" />
-        </label>
-        <label>Last name
-          <input type="text" name="lname" required autocomplete="given-name" title="Your Name" id="lname" />
-        </label>
-        <label>Address
-          <input type="text" name="street" required id="street" placeholder="Street Address" />
-          <input type="text" name="city" required id="city" placeholder="City" />
-          <input type="text" name="state" required id="state" placeholder="State" />
-          <input type="number" name="zip" required id="zip" placeholder="Zip Code" />
-        </label>
+          <label
+            >Payment
+            <input
+              type="tel"
+              name="cardNumber"
+              required
+              placeholder="XXXX-XXXX-XXXX-XXXX"
+              id="cardNumber"
+              maxlength="19"
+            />
+            <input
+              type="text"
+              name="expiration"
+              id="expiration"
+              required
+              placeholder="MM/YY"
+              maxlength="5"
+            />
+            <input
+              type="number"
+              name="code"
+              id="code"
+              required
+              placeholder="Security Code"
+            />
+          </label>
+          <input type="submit" value="Checkout" class="checkout-btn" />
+        </form>
 
-        <label>Payment
-          <input type="tel" name="cardNumber" required placeholder="XXXX-XXXX-XXXX-XXXX" id="cardNumber"
-            maxlength="19" />
-          <input type="text" name="expiration" id="expiration" required placeholder="MM/YY" maxlength="5" />
-          <input type="number" name="code" id="code" required placeholder="Security Code" />
-        </label>
-        <input type="submit" value="Checkout" class="checkout-btn" />
-      </form>
-
-      <div class="order-summary">
-        <h2>Order Summary</h2>
-        <div id="summary-container">
-          <!-- Summary will be injected here by JS -->
+        <div class="order-summary">
+          <h2>Order Summary</h2>
+          <div id="summary-container">
+            <!-- Summary will be injected here by JS -->
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <footer id="main-footer"></footer>
-</body>
-
+    <footer id="main-footer"></footer>
+  </body>
 </html>

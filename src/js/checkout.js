@@ -9,7 +9,10 @@ checkoutProcess.init();
 const form = document.querySelector("#checkout-form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  checkoutProcess.checkout(form);
+  const myForm = document.forms[0];
+  const chk_status = myForm.checkValidity();
+  myForm.reportValidity();
+  if (chk_status) checkoutProcess.checkout(form);
 });
 
 // Input formatting
