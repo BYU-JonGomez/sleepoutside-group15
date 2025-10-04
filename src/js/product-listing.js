@@ -13,3 +13,17 @@ const listElement = document.querySelector(".product-list");
 const myList = new ProductList(category, dataSource, listElement);
 // finally call the init method to show the products
 myList.init();
+
+const searchForm = document.getElementById("searchForm");
+
+if (searchForm) {
+  searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const query = document.getElementById("searchInput").value.trim();
+
+    if (query) {
+      // ✅ Ajustá esta ruta a donde realmente está tu product-list.html
+      window.location.href = `${window.location.origin}/product_listing/product-list.html?search=${encodeURIComponent(query)}`;
+    }
+  });
+}
