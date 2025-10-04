@@ -42,15 +42,20 @@ import { renderListWithTemplate } from "./utils.mjs";
 // }
 function productCardTemplate(product) {
   return `
-        <li class="product-card">
-        <a href="../product_pages/index.html?product=${product.Id}">
-            <img src="${product.Images.PrimaryMedium}" alt="${product.Name}">
-            <h2>${product.Brand.Name}</h2>
-            <h3>${product.Name}</h3>
-            <p class="product-card__price">${product.FinalPrice}</p>
-        </a>
-        </li>
-    `;
+    <li class="product-card">
+      <a href="../product_pages/index.html?product=${product.Id}">
+        <picture>
+          <source media="(min-width: 1950px)" srcset="${product.Images.PrimaryExtraLarge}" />
+          <source media="(min-width: 1200px)" srcset="${product.Images.PrimaryLarge}" />
+          <source media="(min-width: 700px)" srcset="${product.Images.PrimaryMedium}" />
+          <img src="${product.Images.PrimarySmall}" alt="${product.Name}" />
+        </picture>
+        <h2>${product.Brand.Name}</h2>
+        <h3>${product.Name}</h3>
+        <p class="product-card__price">$${product.FinalPrice}</p>
+      </a>
+    </li>
+  `;
 }
 
 export default class ProductList {

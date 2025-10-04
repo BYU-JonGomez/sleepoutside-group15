@@ -11,6 +11,7 @@ export default class ProductDetails {
     this.dataSource = dataSource;    // Instance of ExternalServices for fetching
   }
 
+  
 
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
@@ -49,10 +50,19 @@ export default class ProductDetails {
 function productDetailsTemplate(product) {
   document.getElementById("product-brand-name").textContent = product.Brand.Name;
   document.getElementById("product-name").textContent = product.Name;
-  document.getElementById("productImage").src = product.Images.PrimaryLarge;
-  document.getElementById("productImage").alt = product.Name;
+  document.querySelector("#productImageContainer source[media='(min-width: 1950px)']")
+    .srcset = product.Images.PrimaryExtraLarge;
+  document.querySelector("#productImageContainer source[media='(min-width: 1200px)']")
+    .srcset = product.Images.PrimaryLarge;
+  document.querySelector("#productImageContainer source[media='(min-width: 700px)']")
+    .srcset = product.Images.PrimaryMedium;
+  const productImage = document.getElementById("productImage");
+  productImage.src = product.Images.PrimarySmall;
+  productImage.alt = product.Name;
   document.getElementById("productPrice").textContent = product.FinalPrice;
   document.getElementById("productColor").textContent = product.Colors[0].ColorName;
   document.getElementById("productDesc").innerHTML = product.DescriptionHtmlSimple;
   document.getElementById("addToCart").dataset.id = product.Id;
 }
+
+
