@@ -14,7 +14,12 @@
       <section class="product-detail">
         <h3 id="product-brand-name"></h3>
         <h2 id="product-name"></h2>
-        <img id="productImage" src="" alt="Product Image" />
+        <picture id="productImageContainer">
+          <source media="(min-width: 1950px)" srcset="" />
+          <source media="(min-width: 1200px)" srcset="" />
+          <source media="(min-width: 700px)" srcset="" />
+          <img id="productImage" src="" alt="Product Image" />
+        </picture>
         <p class="product-card__price" id="productPrice"></p>
         <p class="product__color" id="productColor"></p>
         <p class="product__description" id="productDesc"></p>
