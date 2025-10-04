@@ -173,6 +173,14 @@ button {
   pointer-events: none;
 }
 
+.cart-remove-item {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  grid-column: 4/5;
+}
+
 /* End cart icon styles */
 
 .mission {
@@ -405,45 +413,45 @@ footer {
 
 /* Order summary styling */
 .order-summary {
-    background-color: #f4f1de;
-    padding: 1.5rem;
-    border: 1px solid var(--primary-color);
-    border-radius: 6px;
-    max-width: 600px;
-    width: 100%;
-    margin: 2rem auto;
+  background-color: #f4f1de;
+  padding: 1.5rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  max-width: 600px;
+  width: 100%;
+  margin: 2rem auto;
 }
 
 .order-summary h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--secondary-color);
 }
 
 .summary-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.75rem;
-    font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
 }
 
 .summary-item.total {
-    border-top: 2px solid var(--primary-color);
-    padding-top: 1rem;
-    margin-top: 1rem;
-    font-weight: bold;
-    font-size: 1.3rem;
+  border-top: 2px solid var(--primary-color);
+  padding-top: 1rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
 .success-message {
-    text-align: center;
-    margin: 2rem auto;
-    padding: 2rem;
-    border: 1px solid var(--primary-color);
-    border-radius: 6px;
-    max-width: 500px;
+  text-align: center;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  max-width: 500px;
 }
 
 .success-message h1 {
-    color: var(--secondary-color);
+  color: var(--secondary-color);
 }
