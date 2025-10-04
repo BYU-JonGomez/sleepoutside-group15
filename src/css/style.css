@@ -173,6 +173,14 @@ button {
   pointer-events: none;
 }
 
+.cart-remove-item {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  grid-column: 4/5;
+}
+
 /* End cart icon styles */
 
 .mission {
