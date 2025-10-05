@@ -23,7 +23,7 @@ if (searchForm) {
 
     if (query) {
       // ✅ Ajustá esta ruta a donde realmente está tu product-list.html
-      window.location.href = `${window.location.origin}/product_listing/product-list.html?search=${encodeURIComponent(query)}`;
+      window.location.href = `${window.location.origin}/search-product/search_product.html?search=${encodeURIComponent(query)}`;
     }
   });
 }

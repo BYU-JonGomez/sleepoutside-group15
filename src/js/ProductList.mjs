@@ -1,45 +1,6 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
-// template for product card
-// function productCardTemplate(product) {
-//   return `
-//     <li class="product-card">
-//       <a href="product_pages/?product=${product.Id}">
-//         <img
-//           src="${product.Image || ""}"
-//           alt="${product.Name || ""}"
-//         />
-//         <h3 class="card__brand">${product.Brand?.Name || ""}</h3>
-//         <h2 class="card__name">${product.Name || ""}</h2>
-//         <p class="product-card__price">$${product.FinalPrice || ""}</p>
-//       </a>
-//     </li>
-//   `;
-// }
 
-// export default class ProductList {
-//   constructor(category, dataSource, listElement) {
-//     this.category = category;
-//     this.dataSource = dataSource;
-//     this.listElement = listElement;
-//   }
-
-//   async init() {
-//     const list = await this.dataSource.getData();
-
-//     // filter only products with detail pages
-//     const filteredList = list.filter((product) => {
-//       const allowedIds = ["880RR", "985RF", "985PR", "344YJ"];
-//       return allowedIds.includes(product.Id);
-//     });
-
-//     this.renderList(filteredList);
-//   }
-
-//   renderList(list) {
-//     renderListWithTemplate(productCardTemplate, this.listElement, list, "beforeend", true);
-//   }
-// }
 function productCardTemplate(product) {
   return `
     <li class="product-card">
@@ -54,9 +15,13 @@ function productCardTemplate(product) {
         <h3>${product.Name}</h3>
         <p class="product-card__price">$${product.FinalPrice}</p>
       </a>
+      <button class="quick-view-btn" data-id="${product.Id}">
+        Quick View
+      </button>
     </li>
   `;
 }
+
 
 export default class ProductList {
   constructor(productCategory, dataSource, listElement) {
@@ -69,14 +34,53 @@ export default class ProductList {
     const list = await this.dataSource.getData(this.productCategory);
 
     this.renderList(list);
+    this.addQuickViewListeners(list);
+
     document.querySelector("h2").innerHTML = "Top Products: " + this.productCategory;
   }
 
   renderList(list) {
-    //First renderList
-    //const htmlStrings = list.map(productCardTemplate);
-    //this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
-
     renderListWithTemplate(productCardTemplate, this.listElement, list);
+  }
+
+  addQuickViewListeners(products) {
+    const buttons = this.listElement.querySelectorAll(".quick-view-btn");
+    const modal = document.getElementById("productModal");
+    const modalDetails = document.getElementById("modalDetails");
+    const closeModal = document.getElementById("closeModal");
+
+    if (!modal || !closeModal || !modalDetails) {
+      console.error("Modal elements not found in the DOM");
+      return;
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const productId = button.dataset.id;
+        const product = products.find((p) => p.Id == productId);
+        if (product) {
+          modalDetails.innerHTML = this.buildModalContent(product);
+          modal.showModal();
+        }
+      });
+    });
+
+    closeModal.addEventListener("click", () => {
+      modal.close();
+    });
+  }
+
+  buildModalContent(product) {
+    return `
+      <div class="modal-product">
+        <img src="${product.Images.PrimaryLarge}" alt="${product.Name}">
+        <div>
+          <h2>${product.Name}</h2>
+          <p>Brand: ${product.Brand.Name}</p>
+          <p>Price: $${product.FinalPrice}</p>
+          <p>${product.DescriptionHtmlSimple}</p>
+        </div>
+      </div>
+    `;
   }
 }

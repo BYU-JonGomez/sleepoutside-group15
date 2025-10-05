@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -408,7 +408,31 @@ footer {
   font-size: 1rem;
   color: #3d405b;
   width: 50%;
+}
 
+/*Quick view Modal*/
+.product-modal::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.product-modal {
+  border: none;
+  border-radius: 10px;
+  padding: 1rem;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+}
+
+.modal-content {
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
 }
 
 /* General button style for <a> and <input[type=submit]> */
